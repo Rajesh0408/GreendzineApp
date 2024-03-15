@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
+import com.google.android.material.progressindicator.CircularProgressIndicatorSpec
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -36,6 +38,15 @@ class HomeFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
+
+//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+//        super.onViewCreated(view, savedInstanceState)
+//
+//        // Find the ProgressBar by its ID
+//        val progress1 = view.findViewById<ProgressBar>(R.id.progress1)
+//
+//        // Now you can use 'progress1' to manipulate the ProgressBar
+//    }
 
     companion object {
         /**
