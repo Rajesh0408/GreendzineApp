@@ -14,9 +14,8 @@
         android:theme="@style/Theme.GreendzineAssignment"
         tools:targetApi="31">
         <activity
-            android:name=".DashBoardActivity"
-            android:exported="false"
-            android:label="@string/title_activity_dash_board" />
+            android:name=".MainActivity2"
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
