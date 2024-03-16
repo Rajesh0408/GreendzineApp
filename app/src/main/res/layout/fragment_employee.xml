@@ -53,45 +53,18 @@
 
 
             </FrameLayout>
-<FrameLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="20dp"
-    android:layout_marginEnd="50dp"
-    android:layout_marginStart="50dp">
+                <androidx.appcompat.widget.SearchView
+                    android:id="@+id/searchView"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginEnd="50dp"
+                    app:queryHint="Search with name"
+                    app:iconifiedByDefault="false"
+                    android:background="@drawable/edit_round"/>
 
-            <EditText
-                android:id="@+id/password"
 
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Search with name"
-                android:textAlignment="center"
-                android:background="@drawable/edit_round"
-                android:textColorHint="#FFFFFF"
-                android:textColor="#FFFFFF"
-                android:padding="10dp"
-
-                />
-
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/baseline_search_24"
-                android:background="#0F2323"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="20dp"
-                android:layout_gravity="end"
-                />
-
-</FrameLayout>
-<!--        <include-->
-<!--            layout="@layout/custom_view"-->
-<!--            android:id="@+id/include_layout"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:visibility="visible"-->
-<!--            />-->
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerView"

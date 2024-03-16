@@ -2,15 +2,21 @@ package com.example.greendzineassignment
 
 import EmployeeAdapter
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView.OnQueryTextListener
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.JsonArray
+import java.util.Locale
 import com.example.greendzineassignment.DataClass as DataClass
+import androidx.appcompat.widget.SearchView
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -27,6 +33,7 @@ class EmployeeFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,6 +55,9 @@ class EmployeeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        var searchView = view.findViewById(R.id.searchView) as androidx.appcompat.widget.SearchView
+
 
         recyclerView = view.findViewById(R.id.recyclerView)
 
@@ -96,16 +106,54 @@ class EmployeeFragment : Fragment() {
         list.add(dataClass5)
         list.add(dataClass6)
 
-        val obj = DataClassList(list)
+        var obj = DataClassList(list)
 
-        val adapter = EmployeeAdapter(obj.employees)
+        var adapter = EmployeeAdapter(obj.employees)
         recyclerView.adapter = adapter
 //        includeLayout.visibility = View.VISIBLE
         recyclerView.visibility = View.VISIBLE
 
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                searchView.clearFocus()
+
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                filterList(newText, list, adapter)
+                return true
+            }
+        })
+
+
 
     }
 
+
+
+    private fun filterList(query: String?, list: ArrayList<DataClass>, adapter: EmployeeAdapter) {
+        if (query.isNullOrEmpty()) {
+            // Reset the adapter with the original list
+            adapter.setFilteredList(list)
+        } else {
+            val filteredList = ArrayList<DataClass>()
+
+            for (i in list) {
+                if (i.name.lowercase(Locale.ROOT).contains(query.lowercase(Locale.ROOT))) {
+
+                    filteredList.add(i)
+                }
+            }
+            Log.d("Filtered List",filteredList.toString())
+            if (filteredList.isEmpty()) {
+                adapter.setFilteredList(filteredList)
+                Toast.makeText(requireContext(), "No Data Found", Toast.LENGTH_SHORT).show()
+            } else {
+                adapter.setFilteredList(filteredList)
+            }
+        }
+    }
 
     companion object {
         /**

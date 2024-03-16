@@ -89,7 +89,6 @@ class HomeFragment : Fragment() {
         val obj = DataForProgressList(list)
         val adapter = HomeAdapter(obj.ProgressList)
         recyclerView.adapter = adapter
-//        includeLayout.visibility = View.VISIBLE
         recyclerView.visibility = View.VISIBLE
 
     }
