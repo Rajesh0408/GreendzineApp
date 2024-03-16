@@ -1,6 +1,5 @@
 package com.example.greendzineassignment
 
-import java.util.Date
 
 data class DataClass(
     var emp_id: Int,

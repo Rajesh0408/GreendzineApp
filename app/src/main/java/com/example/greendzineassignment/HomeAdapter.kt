@@ -4,9 +4,9 @@ import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.greendzineassignment.DataClass
+
 import com.example.greendzineassignment.DataForProgress
-import com.example.greendzineassignment.DataForProgressList
+
 import com.example.greendzineassignment.R
 
 class HomeAdapter(private val dataList: List<DataForProgress>) :
