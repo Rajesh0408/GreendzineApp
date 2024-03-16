@@ -10,9 +10,4 @@ data class DataForProgress(
 
 data class DataForProgressList(
     var ProgressList : ArrayList<DataForProgress>
-
-) {
-    fun isNotEmpty(): Boolean {
-        return true
-    }
-}
+)

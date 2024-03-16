@@ -1,0 +1,38 @@
+[
+  {
+    "emp_id" : 1,
+    "name": "Arjun",
+    "dob": "16-11-2000",
+    "role":"Software Engineer"
+  },
+  {
+    "emp_id" : 2,
+    "name": "Mahesh",
+    "dob": "15-01-2000",
+    "role":"Web Developer"
+  },
+  {
+    "emp_id" : 3,
+    "name": "Rajesh",
+    "dob": "04-08-2004",
+    "role":"Mobile Developer"
+  },
+  {
+    "emp_id" : 4,
+    "name": "Raja",
+    "dob": "11-11-2003",
+    "role":"Web Developer"
+  },
+  {
+    "emp_id" : 5,
+    "name": "Gokul",
+    "dob": "13-09-2001",
+    "role":"Mobile Developer"
+  },
+  {
+    "emp_id" : 6,
+    "name": "Hema",
+    "dob": "16-08-2002",
+    "role":"Software Engineer"
+  }
+]
