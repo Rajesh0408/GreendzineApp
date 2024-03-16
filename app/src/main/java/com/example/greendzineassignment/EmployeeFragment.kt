@@ -1,12 +1,14 @@
 package com.example.greendzineassignment
 
 import EmployeeAdapter
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.SearchView.OnQueryTextListener
 import android.widget.TextView
 import android.widget.Toast
@@ -55,9 +57,13 @@ class EmployeeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         var searchView = view.findViewById(R.id.searchView) as androidx.appcompat.widget.SearchView
 
+        var search = view.findViewById(R.id.searchView) as SearchView
+        var searchEditText =  search.findViewById(androidx.appcompat.R.id.search_src_text) as (EditText)
+        searchEditText.setTextColor(getResources().getColor(R.color.white));
+        searchEditText.setHintTextColor(getResources().getColor(R.color.white));
+        searchEditText.setBackgroundColor(Color.TRANSPARENT);
 
         recyclerView = view.findViewById(R.id.recyclerView)
 
