@@ -8,7 +8,7 @@ import com.example.greendzineassignment.databinding.ActivityMain2Binding
 
 class MainActivity2 : AppCompatActivity() {
 
-  //  RecyclerView recyclerView;
+
 
     private lateinit var binding: ActivityMain2Binding
     override fun onCreate(savedInstanceState: Bundle?) {

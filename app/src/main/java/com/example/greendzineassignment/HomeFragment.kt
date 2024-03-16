@@ -10,17 +10,12 @@ import android.widget.ProgressBar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.progressindicator.CircularProgressIndicatorSpec
+import com.google.gson.Gson
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [HomeFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+
 class HomeFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
@@ -48,46 +43,16 @@ class HomeFragment : Fragment() {
         recyclerView = view.findViewById(R.id.recyclerViewProgress)
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.setHasFixedSize(true)
-        val data1 = DataForProgress(
-            "Productivity on Monday",
-            "4%",
-            4,
-        )
-        val data2 = DataForProgress(
-            "Productivity on Tuesday",
-            "92%",
-            92,
-        )
-        val data3 = DataForProgress(
-            "Productivity on Wednesday",
-            "122%",
-            122,
-        )
-        val data4 = DataForProgress(
-            "Productivity on Thursday",
-            "93%",
-            93,
-        )
-        val data5 = DataForProgress(
-            "Productivity on Friday",
-            "89%", 89,
-        )
-        val data6 = DataForProgress(
-            "Productivity on Saturday",
-            "98%",
-            98,
-        )
-//        val progress1 = view.findViewById<ProgressBar>(R.id.progress)
-        val list = ArrayList<DataForProgress>()
-        list.add(data1)
-        list.add(data2)
-        list.add(data3)
-        list.add(data4)
-        list.add(data5)
-        list.add(data6)
 
-        val obj = DataForProgressList(list)
-        val adapter = HomeAdapter(obj.ProgressList)
+        val assetManager = requireContext().assets
+        val inputStream = assetManager.open("jsonClass.json")
+        val jsonString = inputStream.bufferedReader().use { it.readText() }
+
+        val dataClassList = Gson().fromJson(jsonString, DataForProgressList::class.java)
+        val progress = dataClassList.ProgressList
+
+
+        val adapter = HomeAdapter(progress)
         recyclerView.adapter = adapter
         recyclerView.visibility = View.VISIBLE
 
