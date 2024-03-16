@@ -1,11 +1,14 @@
 package com.example.greendzineassignment
 
+import HomeAdapter
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.progressindicator.CircularProgressIndicatorSpec
 
 // TODO: Rename parameter arguments, choose names that match
@@ -23,6 +26,7 @@ class HomeFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    private lateinit var recyclerView: RecyclerView;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -35,29 +39,62 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
-//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        super.onViewCreated(view, savedInstanceState)
-//
-//        // Find the ProgressBar by its ID
-//        val progress1 = view.findViewById<ProgressBar>(R.id.progress1)
-//
-//        // Now you can use 'progress1' to manipulate the ProgressBar
-//    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        recyclerView = view.findViewById(R.id.recyclerViewProgress)
+        recyclerView.layoutManager = LinearLayoutManager(context)
+        recyclerView.setHasFixedSize(true)
+        val data1 = DataForProgress(
+            "Productivity on Monday",
+            "4%",
+            4,
+        )
+        val data2 = DataForProgress(
+            "Productivity on Tuesday",
+            "92%",
+            92,
+        )
+        val data3 = DataForProgress(
+            "Productivity on Wednesday",
+            "122%",
+            122,
+        )
+        val data4 = DataForProgress(
+            "Productivity on Thursday",
+            "93%",
+            93,
+        )
+        val data5 = DataForProgress(
+            "Productivity on Friday",
+            "89%", 89,
+        )
+        val data6 = DataForProgress(
+            "Productivity on Saturday",
+            "98%",
+            98,
+        )
+//        val progress1 = view.findViewById<ProgressBar>(R.id.progress)
+        val list = ArrayList<DataForProgress>()
+        list.add(data1)
+        list.add(data2)
+        list.add(data3)
+        list.add(data4)
+        list.add(data5)
+        list.add(data6)
+
+        val obj = DataForProgressList(list)
+        val adapter = HomeAdapter(obj.ProgressList)
+        recyclerView.adapter = adapter
+//        includeLayout.visibility = View.VISIBLE
+        recyclerView.visibility = View.VISIBLE
+
+    }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment HomeFragment.
-         */
-        // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
             HomeFragment().apply {
